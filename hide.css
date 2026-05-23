@@ -1,0 +1,61 @@
+html.iwr-hidden .items-column-list {
+  visibility: hidden;
+}
+
+/* Cancel any in-progress transitions/animations on list descendants so the
+   hide is atomic — eliminates flicker of items mid-fade (e.g. PDF chips). */
+html.iwr-hidden .items-column-list,
+html.iwr-hidden .items-column-list *,
+html.iwr-hidden .items-column-list *::before,
+html.iwr-hidden .items-column-list *::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Force toolbar + our button visible regardless of inherited visibility.
+   In row mode, Proton nests the toolbar inside .items-column-list. */
+html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"],
+html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] * {
+  visibility: visible !important;
+}
+
+/* Hide the native folder h2 whenever our button is in the toolbar slot,
+   so the button keeps the same position when the user toggles. */
+nav[data-shortcut-target="mailbox-toolbar"] .toolbar-inner > .flex-1:has(#iwr-toggle-button) h2 {
+  display: none;
+}
+
+/* Hide other toolbar items when inbox is hidden — clean IWR look.
+   Exception: the select-all-wrapper keeps its space (just invisible) so the
+   toggle button stays in the same horizontal position across both states. */
+html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] .toolbar-inner > .select-all-wrapper {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] .toolbar-inner > *:not(.flex-1):not(.select-all-wrapper) {
+  display: none !important;
+}
+html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] > .toolbar-inner:not(:has(#iwr-toggle-button)) {
+  display: none !important;
+}
+
+#iwr-toggle-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: var(--text-weak, #5f6368) !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 4px !important;
+  height: 36px !important;
+  min-width: 0 !important;
+  padding: 0 8px !important;
+  cursor: pointer !important;
+  outline: none !important;
+}
+
+#iwr-toggle-button:hover {
+  text-decoration: underline;
+}
