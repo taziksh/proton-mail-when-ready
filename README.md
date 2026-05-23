@@ -2,8 +2,6 @@
 
 Firefox extension that hides the Proton Mail inbox message list until you click "Show Inbox" in the toolbar.
 
-This is a tiny attention guard for opening Proton Mail without immediately getting pulled into unread mail.
-
 ## Behavior
 
 - Hides the Proton Mail inbox message list by default.
@@ -20,7 +18,3 @@ This is a tiny attention guard for opening Proton Mail without immediately getti
 ## Privacy
 
 The extension does not send data anywhere. It only changes the local page presentation in Proton Mail.
-
-## Status
-
-Personal extension. Tested as a temporary Firefox add-on.
