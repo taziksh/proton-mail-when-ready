@@ -1,0 +1,18 @@
+{
+  "categories": ["social-communication"],
+  "summary": {
+    "en-US": "Hide your Proton Mail inbox until you're ready for it, so you can write or search without getting pulled into unread mail."
+  },
+  "description": {
+    "en-US": "Opening your email to send one message shouldn't mean getting pulled into twenty new ones.\n\nProton Mail When Ready hides your inbox by default and shows a single \"Show Inbox\" button instead. Compose, search, and other folders work as normal.\n\nHidden until you click \"Show Inbox\":\n- The inbox message list\n- The category tabs and their unread dots\n- The Inbox unread count in the sidebar and tab title\n\nPrivacy: collects no data, makes no network requests, and only runs on mail.proton.me.\n\nNot affiliated with Proton AG or the Inbox When Ready extension for Gmail.\n\nOpen source: https://github.com/taziksh/proton-mail-when-ready"
+  },
+  "homepage": {
+    "url": { "en-US": "https://github.com/taziksh/proton-mail-when-ready" }
+  },
+  "support_url": {
+    "en-US": "https://github.com/taziksh/proton-mail-when-ready/issues"
+  },
+  "version": {
+    "license": "MIT"
+  }
+}
