@@ -1,20 +1,27 @@
 # Proton Mail When Ready
 
-Firefox extension that hides the Proton Mail inbox message list until you click "Show Inbox" in the toolbar.
+Firefox extension that hides the Proton Mail inbox until you click "Show Inbox".
 
-## Behavior
-
-- Hides the Proton Mail inbox message list by default.
-- Adds a "Show Inbox" control when the inbox is hidden.
-- Removes the unread count from the browser tab title.
+- Hides the inbox message list by default, with a "Show Inbox" / "Hide Inbox" toggle in the toolbar.
+- Removes the unread count from the tab title.
 - Runs only on `https://mail.proton.me/*`.
 
-## Install (development)
+Works in Firefox 142+ and Firefox-based browsers (e.g. Zen).
 
-1. Open Firefox → `about:debugging` → "This Firefox"
-2. Click "Load Temporary Add-on…"
-3. Pick `manifest.json` from this directory
+## Install
+
+Self-distributed as an unlisted add-on signed by Mozilla. Sign a build (below) and drag the `.xpi` from `web-ext-artifacts/` into the browser.
+
+For development: `about:debugging` → "This Firefox" → "Load Temporary Add-on…" → pick `manifest.json`.
+
+## Release
+
+Bump `version` in `manifest.json`, then:
+
+```
+web-ext sign --channel=unlisted --api-key="$AMO_JWT_ISSUER" --api-secret="$AMO_JWT_SECRET"
+```
 
 ## Privacy
 
-The extension does not send data anywhere. It only changes the local page presentation in Proton Mail.
+Collects no data and makes no network requests. It only changes how Proton Mail's page is displayed.

@@ -25,7 +25,7 @@ nav[data-shortcut-target="mailbox-toolbar"] .toolbar-inner > .flex-1:has(#iwr-to
   display: none;
 }
 
-/* Hide other toolbar items when inbox is hidden — clean IWR look.
+/* Hide other toolbar items when inbox is hidden, leaving only the toggle.
    Exception: the select-all-wrapper keeps its space (just invisible) so the
    toggle button stays in the same horizontal position across both states. */
 html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] .toolbar-inner > .select-all-wrapper {
@@ -58,4 +58,9 @@ html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] > .toolbar-inner:not
 
 #iwr-toggle-button:hover {
   text-decoration: underline;
+}
+
+#iwr-toggle-button:focus-visible {
+  outline: 2px solid currentColor !important;
+  outline-offset: 2px;
 }
