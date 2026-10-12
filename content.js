@@ -107,6 +107,22 @@
     syncButton();
   }
 
+  // Fail open: if the list has rendered but there's no toolbar slot for the
+  // button (e.g. an unfamiliar layout), show the inbox rather than lock it.
+  let failOpenTimer = null;
+  function checkFailOpen() {
+    if (failOpenTimer) return;
+    if (!isOnInbox() || !isHidden()) return;
+    if (!document.querySelector('.items-column-list')) return;
+    if (document.getElementById(BUTTON_ID)) return;
+    failOpenTimer = setTimeout(() => {
+      failOpenTimer = null;
+      if (isOnInbox() && isHidden() && !document.getElementById(BUTTON_ID)) {
+        setHidden(false);
+      }
+    }, 1500);
+  }
+
   // Re-inject button across React re-renders.
   let rafQueued = false;
   function scheduleSync() {
@@ -115,6 +131,7 @@
     requestAnimationFrame(() => {
       rafQueued = false;
       if (isOnInbox()) injectButton();
+      checkFailOpen();
     });
   }
 

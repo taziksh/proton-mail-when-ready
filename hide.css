@@ -2,6 +2,16 @@ html.iwr-hidden .items-column-list {
   visibility: hidden;
 }
 
+/* Sidebar Inbox unread count, hidden everywhere like the tab-title count. */
+[data-testid="navigation-link:inbox"] [data-testid="navigation-link:unread-count"] {
+  display: none !important;
+}
+
+/* Category tabs (Primary, Social, …) show unread dots, so hide them too. */
+html.iwr-hidden [data-testid="categories-tabs"] {
+  display: none !important;
+}
+
 /* Cancel any in-progress transitions/animations on list descendants so the
    hide is atomic — eliminates flicker of items mid-fade (e.g. PDF chips). */
 html.iwr-hidden .items-column-list,
@@ -25,14 +35,14 @@ nav[data-shortcut-target="mailbox-toolbar"] .toolbar-inner > .flex-1:has(#iwr-to
   display: none;
 }
 
-/* Hide other toolbar items when inbox is hidden, leaving only the toggle.
-   Exception: the select-all-wrapper keeps its space (just invisible) so the
-   toggle button stays in the same horizontal position across both states. */
-html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] .toolbar-inner > .select-all-wrapper {
-  opacity: 0 !important;
-  pointer-events: none !important;
+/* Put the toggle first in the toolbar, so it sits at the same position whether
+   the rest of the toolbar is shown or hidden. */
+nav[data-shortcut-target="mailbox-toolbar"] .toolbar-inner > .flex-1:has(#iwr-toggle-button) {
+  order: -1;
 }
-html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] .toolbar-inner > *:not(.flex-1):not(.select-all-wrapper) {
+
+/* Hide other toolbar items when inbox is hidden, leaving only the toggle. */
+html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] .toolbar-inner > *:not(.flex-1) {
   display: none !important;
 }
 html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] > .toolbar-inner:not(:has(#iwr-toggle-button)) {
@@ -44,8 +54,8 @@ html.iwr-hidden nav[data-shortcut-target="mailbox-toolbar"] > .toolbar-inner:not
   align-items: center !important;
   justify-content: center !important;
   font-size: 0.875rem !important;
-  font-weight: 500 !important;
-  color: var(--text-weak, #5f6368) !important;
+  font-weight: 600 !important;
+  color: var(--text-norm, currentColor) !important;
   background: none !important;
   border: none !important;
   border-radius: 4px !important;

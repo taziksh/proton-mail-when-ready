@@ -2,8 +2,9 @@
 
 Firefox extension that hides the Proton Mail inbox until you click "Show Inbox".
 
-- Hides the inbox message list by default, with a "Show Inbox" / "Hide Inbox" toggle in the toolbar.
-- Removes the unread count from the tab title.
+- Hides the inbox message list and category tabs by default, with a "Show Inbox" / "Hide Inbox" toggle in the toolbar.
+- Removes the Inbox unread count from the tab title and sidebar.
+- If the toggle can't be placed (unfamiliar layout), the inbox is shown rather than locked away.
 - Runs only on `https://mail.proton.me/*`.
 
 Works in Firefox 142+ and Firefox-based browsers (e.g. Zen).
